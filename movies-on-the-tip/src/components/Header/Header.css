@@ -1,0 +1,18 @@
+#header .navbar-brand {
+    background-color: var(--bs-gray-400);
+    padding: 0px 10px;
+    border-radius: 5px;
+}
+#header.navbar>.container {
+    justify-content: flex-start;
+}
+#header .navbar-brand span:first-child {
+    color: var(--bs-code-color);
+    text-align: left;
+    font-size: calc(var(--bs-navbar-brand-font-size) + 20px);
+}
+#header .navbar-brand span:last-child {
+    color: var(--bs-green);
+    font-size: calc(var(--bs-navbar-brand-font-size) - 8px);
+    border-bottom: 2px solid var(--bs-code-color);
+}
