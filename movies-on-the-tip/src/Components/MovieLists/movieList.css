@@ -1,0 +1,28 @@
+.card-list-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+.card-list-container .card {
+    width: 23%;
+    margin: 10px 10px;
+}
+
+@media screen and (max-width: 1024px)  {
+    .card-list-container .card {
+        width: 48%;
+        margin: 5px;
+    }
+}
+
+@media screen and (max-width: 425px)  {
+    .card-list-container .card {
+        width: 100%;
+        margin: 0px;
+    }
+}

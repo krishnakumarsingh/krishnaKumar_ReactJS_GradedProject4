@@ -3,16 +3,62 @@
     padding: 0px 10px;
     border-radius: 5px;
 }
+
 #header.navbar>.container {
     justify-content: flex-start;
 }
+
 #header .navbar-brand span:first-child {
     color: var(--bs-code-color);
     text-align: left;
     font-size: calc(var(--bs-navbar-brand-font-size) + 20px);
 }
+
 #header .navbar-brand span:last-child {
     color: var(--bs-green);
     font-size: calc(var(--bs-navbar-brand-font-size) - 8px);
     border-bottom: 2px solid var(--bs-code-color);
+}
+
+#header .nav-link.active {
+    color: var(--bs-code-color);
+}
+
+.btnic {
+    width: 172px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 1024px)  {
+    body {
+        padding-top: 0px;
+    }
+    #header.navbar {
+        padding-bottom: 30px;
+        position: relative;
+    }
+    #header.navbar>.container,
+    #header.navbar>.container .navbar-collapse {flex-direction: column;}
+    #header.navbar>.container .navbar-brand {margin-right: 0;}
+}
+
+
+@media screen and (max-width: 425px)  {
+    #header.navbar>.container .navbar-collapse .navbar-nav {
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+
+    #header.navbar>.container .navbar-collapse form {
+        text-align: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .card-list-container .card {
+        width: 100%;
+    }
 }
