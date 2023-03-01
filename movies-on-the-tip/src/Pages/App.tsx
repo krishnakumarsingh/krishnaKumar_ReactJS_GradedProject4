@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from '../Components/Header/Header';
@@ -9,6 +8,7 @@ import AddToCart from './AddToCart';
 import ComingSoon from "./ComingSoon";
 import Home from './Home';
 import MoviesInTheaters from "./MoviesInTheaters";
+import NoPage from './NoPage';
 import TopRatedIndian from "./TopRatedIndian";
 import TopRatedMovies from "./TopRatedMovies";
 
@@ -42,11 +42,12 @@ const App = () => {
                     <Route path="/movies-in-theaters" element={<MoviesInTheaters movieName={movieName} />} />
                     <Route path="/top-rated-indian" element={<TopRatedIndian movieName={movieName} />} />
                     <Route path="/top-rated-movies" element={<TopRatedMovies movieName={movieName} />} />
-                    <Route path="/add-to-cart" element={<AddToCart />} />
+                    <Route path="/add-to-cart" element={<AddToCart movieName={movieName} />} />
                     <Route path="/movies-in-theaters/:id" element={<MoviesDetails />} />
                     <Route path="/coming-soon/:id" element={<MoviesDetails />} />
                     <Route path="/top-rated-indian/:id" element={<MoviesDetails />} />
                     <Route path="/top-rated-movies/:id" element={<MoviesDetails />} />
+                    <Route path='*' element={<NoPage />}/>
                 </Routes>
             </Router>
         </AddToCartContext.Provider>

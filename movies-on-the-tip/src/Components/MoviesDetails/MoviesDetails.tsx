@@ -34,8 +34,10 @@ const MoviesDetails = () => {
             }
         }
         helper();
-    }, []);
+    }, [id]);
+    if (loading) return <>Loading...</>
     if (movie && !movie.title) return null;
+    if (error) return null;
     return (
         <Card style={{ "height": "calc(100vh - 90px)" }}>
             <Card.ImgOverlay>

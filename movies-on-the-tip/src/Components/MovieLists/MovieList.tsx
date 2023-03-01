@@ -5,8 +5,8 @@ import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom';
 import { avgRating } from '../../helper/helper';
 import IMovieList from "../../models/IMovieObj";
+import { setMoviesData } from '../../services/moviesData';
 import Rating from '../Shared/Ratings';
-import { setMoviesData, removeMoviesData } from '../../services/moviesData';
 
 const imgBaseUrl = process.env.REACT_APP_IMG_BASE_URL;
 

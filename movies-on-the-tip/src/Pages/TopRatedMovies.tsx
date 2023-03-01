@@ -25,6 +25,6 @@ const TopRatedMovies = ({movieName}:{movieName:string}) => {
     }, []);
 
     let filter = filterDataByName(movieName, moviesList);
-    return <MovieLists title={title} moviesList={moviesList || filter} loading={loading} error={error} url={`/top-rated-movies`} />
+    return <MovieLists title={title} moviesList={filter || moviesList} loading={loading} error={error} url={`/top-rated-movies`} />
 }
 export default TopRatedMovies;

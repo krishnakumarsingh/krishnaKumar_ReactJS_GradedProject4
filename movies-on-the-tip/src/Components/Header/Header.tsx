@@ -1,7 +1,6 @@
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
-import { Badge } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -9,7 +8,6 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
-import { IMovieObj } from '../../models/IMovieObj';
 import "./header.css";
 
 export default function Header({ searchData, moviesList }: { searchData: any, moviesList: number }) {
@@ -34,7 +32,8 @@ export default function Header({ searchData, moviesList }: { searchData: any, mo
                     <Form className="d-flex">
                         <Button variant="outline-success btnic">
                             <Nav.Link active={activeKey === "add-to-cart"} eventKey="add-to-cart" as={Link} to="add-to-cart">
-                            <FontAwesomeIcon icon={faCartShopping} /> <Badge bg="info">{moviesList}</Badge> Carts</Nav.Link>
+                            <FontAwesomeIcon icon={faCartShopping} /> 
+                            {" "}Carts</Nav.Link>
                         </Button>&nbsp;&nbsp;
                         <Form.Control
                             type="search"

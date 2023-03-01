@@ -13,6 +13,10 @@
     margin: 10px 10px;
 }
 
+.card-img, .card-img-top {
+    height: 400px;
+}
+
 @media screen and (max-width: 1024px)  {
     .card-list-container .card {
         width: 48%;
@@ -24,5 +28,10 @@
     .card-list-container .card {
         width: 100%;
         margin: 0px;
+        margin-bottom: 10px;
+    }
+
+    .card-img, .card-img-top {
+        height: auto;
     }
 }

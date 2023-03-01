@@ -4,7 +4,7 @@ import { filterDataByName } from "../helper/helper";
 import IMovieList from "../models/IMovieObj";
 import { getComingSoon } from "../services/moviesData";
 
-const ComingSoon = ({movieName}:{movieName:string}) => {
+const ComingSoon = ({ movieName }: { movieName: string }) => {
     const [moviesList, setMoviesList] = useState<IMovieList[]>([]);
     const [error, setError] = useState<null | Error>(null);
     const [loading, setLoading] = useState<boolean>(true);
@@ -23,8 +23,7 @@ const ComingSoon = ({movieName}:{movieName:string}) => {
         }
         helper();
     }, []);
-
     let filter = filterDataByName(movieName, moviesList);
-    return <MovieLists title={title} moviesList={moviesList || filter} loading={loading} error={error} url={`/coming-soon`} />
+    return <MovieLists title={title} moviesList={filter || moviesList} loading={loading} error={error} url={`/coming-soon`} />
 }
 export default ComingSoon;
