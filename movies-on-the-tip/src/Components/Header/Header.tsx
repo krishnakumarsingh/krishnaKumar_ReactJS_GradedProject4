@@ -34,7 +34,7 @@ export default function Header({ searchData, moviesList }: { searchData: any, mo
                         <Button variant="outline-success btnic">
                             <Nav.Link active={activeKey === "add-to-cart"} eventKey="add-to-cart" as={Link} to="add-to-cart">
                             <FontAwesomeIcon icon={faCartShopping} /> 
-                            {" "}<Badge pill bg="warning" text="dark" className='badge-cart'>{moviesList}</Badge>Carts</Nav.Link>
+                            {" "}<Badge pill bg="warning" text="dark" className='badge-cart'>{moviesList}</Badge>Watchlist</Nav.Link>
                         </Button>&nbsp;&nbsp;
                         <Form.Control
                             type="search"
