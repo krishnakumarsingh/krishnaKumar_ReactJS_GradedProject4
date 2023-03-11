@@ -26,7 +26,7 @@ Movies on the Tip is an online movie manager whose responsibility is to take car
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 ## Installation
-Download in two different folder
+Download in two different folder, [First we need to start json-server]
 1. DB
 2. MOVIES-ON-THE-TIP
 
