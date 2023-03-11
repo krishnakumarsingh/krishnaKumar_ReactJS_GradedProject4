@@ -19,20 +19,23 @@ const App = () => {
     const searchData = (message:string) => {
         setMovieName(message);
     }
-    useEffect(() => {
-        const helper = async () => {
-            try {
-                const list = await getFavourite();
-                setAddToCartmovies(list.length);
-            } catch (error) {
-                setError(error as Error);
-            }
+    const helper = async () => {
+        try {
+            const list = await getFavourite();
+            setAddToCartmovies(list.length);
+        } catch (error) {
+            setError(error as Error);
         }
+    }
+    useEffect(() => {
         helper();
     }, []);
+    const addToCartmoviesFn = () => {
+        helper();
+    }
     if(error) return <>Getting Error</>
     return (
-        <AddToCartContext.Provider value={addToCartmovies}>
+        <AddToCartContext.Provider value={addToCartmoviesFn}>
             <Router>
                 <Header searchData={searchData} moviesList={addToCartmovies} />
                 <Routes>

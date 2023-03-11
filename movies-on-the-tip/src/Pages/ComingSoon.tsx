@@ -6,24 +6,16 @@ import { getComingSoon } from "../services/moviesData";
 
 const ComingSoon = ({ movieName }: { movieName: string }) => {
     const [moviesList, setMoviesList] = useState<IMovieList[]>([]);
-    const [error, setError] = useState<null | Error>(null);
-    const [loading, setLoading] = useState<boolean>(true);
     const [title, setTitle] = useState<string>("");
     useEffect(() => {
         const helper = async () => {
-            try {
-                const list = await getComingSoon();
-                setMoviesList(list);
-                setTitle("Coming Soon");
-            } catch (error) {
-                setError(error as Error);
-            } finally {
-                setLoading(false);
-            }
+            const list = await getComingSoon();
+            setMoviesList(list);
+            setTitle("Coming Soon");
         }
         helper();
     }, []);
     let filter = filterDataByName(movieName, moviesList);
-    return <MovieLists title={title} moviesList={filter || moviesList} loading={loading} error={error} url={`/coming-soon`} />
+    return <MovieLists title={title} moviesList={filter || moviesList} url={`/coming-soon`} />
 }
 export default ComingSoon;

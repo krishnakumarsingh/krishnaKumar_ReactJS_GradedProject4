@@ -16,19 +16,13 @@ const Rating = ( { rating, numRatings } : props ) => {
         <>
             <span className='rating'>
                 {
-                    Array.from( { length: numFullStars } ).map(
-                        item => <FontAwesomeIcon key={item as string} icon={faStar} />
-                    )
+                    Array.from( { length: numFullStars } ).map(item => <FontAwesomeIcon key={item as string} icon={faStar} />)
                 }
                 {
-                    Array.from( { length: numHalfStars } ).map(
-                        item => <FontAwesomeIcon key={item as string} icon={faStarHalfAlt} />
-                    )
+                    Array.from( { length: numHalfStars } ).map(item => <FontAwesomeIcon key={item as string} icon={faStarHalfAlt} />)
                 }
                 {
-                    Array.from( { length: numEmptyStar } ).map(
-                        item => <FontAwesomeIcon key={item as string} icon={faStarEmpty} />
-                    )
+                    Array.from( { length: numEmptyStar } ).map(item => <FontAwesomeIcon key={item as string} icon={faStarEmpty} />)
                 }
             </span>
             <span>&nbsp;&nbsp;({numRatings})</span>

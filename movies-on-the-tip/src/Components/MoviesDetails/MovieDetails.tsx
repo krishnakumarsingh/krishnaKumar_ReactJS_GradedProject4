@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Collapse from 'react-bootstrap/Collapse';
@@ -7,14 +7,22 @@ import Row from 'react-bootstrap/Row';
 import { avgRating } from '../../helper/helper';
 import IMovieList from "../../models/IMovieObj";
 import Genres from '../Shared/Genres';
+import Loader from '../Shared/Loader';
 import Rating from '../Shared/Ratings';
 import Starts from '../Shared/Starts';
 
 const imgBaseUrl = process.env.REACT_APP_IMG_BASE_URL;
 
 const MovieDetails = ({ movie }: { movie: IMovieList }) => {
+    const [loading, setLoading] = useState<boolean>(true);
     const [open, setOpen] = useState<boolean>(false);
-    if (!movie) return null;
+    useEffect(() => {
+        if(movie.title) {
+            setLoading(false);
+        }
+    }, [movie]);
+    console.log(movie)
+    if (loading) return <Loader />;
     return (
         <Card className={"bg-dark text-white"}>
             <Row>

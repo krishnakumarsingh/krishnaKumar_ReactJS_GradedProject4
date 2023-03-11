@@ -1,6 +1,7 @@
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
+import { Badge } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -10,7 +11,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import "./header.css";
 
-export default function Header({ searchData, moviesList }: { searchData: any, moviesList: number }) {
+export default function Header({ searchData, moviesList }: { searchData: any, moviesList?: number }) {
     const [activeKey, setActiveKey] = useState("home");
     const [searchText, setSearchText] = useState<string>("");
     if (searchData) searchData(searchText);
@@ -33,7 +34,7 @@ export default function Header({ searchData, moviesList }: { searchData: any, mo
                         <Button variant="outline-success btnic">
                             <Nav.Link active={activeKey === "add-to-cart"} eventKey="add-to-cart" as={Link} to="add-to-cart">
                             <FontAwesomeIcon icon={faCartShopping} /> 
-                            {" "}Carts</Nav.Link>
+                            {" "}<Badge pill bg="warning" text="dark" className='badge-cart'>{moviesList}</Badge>Carts</Nav.Link>
                         </Button>&nbsp;&nbsp;
                         <Form.Control
                             type="search"

@@ -10,23 +10,29 @@ import Rating from '../Shared/Ratings';
 
 const imgBaseUrl = process.env.REACT_APP_IMG_BASE_URL;
 
-const MovieList = ({ movieData, classNames, url, type, nameData }: { movieData?: IMovieList | undefined, classNames?: string, url?: string, type: string, nameData?: any }) => {
+const MovieList = ({ movieData, classNames, url, type, nameData, addToCartmoviesFn }: { movieData?: IMovieList | undefined, classNames?: string, url?: string, type: string, nameData?: any, addToCartmoviesFn?: any }) => {
     if (!movieData) return null;
     if (!avgRating(movieData.ratings)) return null;
     const addToCartType = window.location.pathname.includes("add-to-cart");
     const toHref = addToCartType ? `${movieData.id}` : `${url}/:${movieData.id}`;
-    return (
-        <Card className={classNames ? classNames : ""}>
-            <Card.Img variant="top" src={`${imgBaseUrl}/${movieData.poster}`} />
-            <Card.Body>
-                <Card.Title>{movieData.title}</Card.Title>
-                <Card.Text><Rating rating={avgRating(movieData.ratings)} numRatings={movieData.ratings?.length} /></Card.Text>
-                <div>{!addToCartType && <Button variant="info" active style={{ width: '50%' }}><Nav.Link as={Link} to={toHref}>View More</Nav.Link></Button>}
-                    {' '}{addToCartType && <Button variant="danger" active style={{ width: '100%' }} onClick={() => nameData(movieData, type)}>- Watchlist</Button>}
-                    {!addToCartType && <Button variant="success" active style={{ width: '50%', marginRight: '-10px' }} onClick={() => setMoviesData(movieData, type)}>+ Watchlist</Button>}
-                </div>
-            </Card.Body>
-        </Card>
-    );
+    const addInCart = () => {
+        setMoviesData(movieData, type)
+        addToCartmoviesFn();
+    }
+    const removeFromCart = () => {
+        nameData(movieData, type);
+        addToCartmoviesFn();
+    }
+    return <Card className={classNames ? classNames : ""}>
+                <Card.Img variant="top" src={`${imgBaseUrl}/${movieData.poster}`} />
+                <Card.Body>
+                    <Card.Title>{movieData.title}</Card.Title>
+                    <Card.Text><Rating rating={avgRating(movieData.ratings)} numRatings={movieData.ratings?.length} /></Card.Text>
+                    <div>{!addToCartType && <Button variant="info" active style={{ width: '50%' }}><Nav.Link as={Link} to={toHref}>View More</Nav.Link></Button>}
+                        {' '}{addToCartType && <Button variant="danger" active style={{ width: '100%' }} onClick={() => {removeFromCart()}}>- Watchlist</Button>}
+                        {!addToCartType && <Button variant="success" active style={{ width: '50%', marginRight: '-10px' }} onClick={() => {addInCart()}}>+ Watchlist</Button>}
+                    </div>
+                </Card.Body>
+            </Card>
 }
 export default MovieList;
