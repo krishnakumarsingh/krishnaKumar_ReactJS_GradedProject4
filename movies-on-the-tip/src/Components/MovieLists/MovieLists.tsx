@@ -18,7 +18,7 @@ const MovieLists = ({ title, moviesList, url, nameData, page }: { title: string,
     return (
         <AddToCartContext.Consumer>
             {(addToCartmoviesFn) => (
-                <div className='container'>
+                moviesList.length > 0 && <div className='container'>
                     {title && <h2 className='movie-list-title'>{title}:
                         {page === "home" && url && <Button onClick={() => window.location.href = url}>View More</Button>}</h2>}
                     <div className='card-list-container'>
