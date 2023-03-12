@@ -13,3 +13,5 @@ code {
     monospace;
 }
 
+.home > div:nth-child(even) {background: #cccccc2e; padding: 25px}
+.home > div:nth-child(odd) {background: #FFF; padding: 25px}

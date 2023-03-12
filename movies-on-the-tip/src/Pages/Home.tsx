@@ -6,12 +6,12 @@ import TopRatedMovies from "./TopRatedMovies";
 
 const Home = ({movieName}:{movieName:string}) => {
     return (
-        <>
-            <MoviesInTheaters movieName={movieName} />
-            <ComingSoon movieName={movieName} />
-            <TopRatedIndian movieName={movieName} />
-            <TopRatedMovies movieName={movieName} />
-        </>
+        <div className="home">
+            <div><MoviesInTheaters movieName={movieName} page={"home"} /></div>
+            <div><ComingSoon movieName={movieName} page={"home"} /></div>
+            <div><TopRatedIndian movieName={movieName} page={"home"} /></div>
+            <div><TopRatedMovies movieName={movieName} page={"home"} /></div>
+        </div>
     )
 }
 export default Home;

@@ -1,6 +1,6 @@
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Badge } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -14,6 +14,24 @@ import "./style.css";
 export default function Header({ searchData, moviesList }: { searchData: any, moviesList?: number }) {
     const [activeKey, setActiveKey] = useState("home");
     const [searchText, setSearchText] = useState<string>("");
+    const [curentPage, setCurrentPage] = useState<string>("");
+    useEffect(() => {
+        const comingSoonUrl = window.location.pathname.match(/^\/coming-soon/) ? "active" : "";
+        const moviesInTheatersUrl = window.location.pathname.match(/^\/movies-in-theaters/) ? "active" : "";
+        const topRatedIndianUrl = window.location.pathname.match(/^\/top-rated-indian/) ? "active" : "";
+        const topRatedMoviesUrl = window.location.pathname.match(/^\/top-rated-movies/) ? "active" : "";
+        
+        setCurrentPage(
+            comingSoonUrl ? "coming-soon" :
+            moviesInTheatersUrl ? "movies-in-theaters" :
+            topRatedIndianUrl ? "top-rated-indian" :
+            topRatedMoviesUrl ? "top-rated-movies" : "home");
+    }, [window.location.href]);
+
+    useEffect(() => {
+        setActiveKey(curentPage);
+    }, [curentPage]);
+    
     if (searchData) searchData(searchText);
     return (
         <Navbar fixed="top" bg="light" variant="light" id="header" onSelect={(eventKey) => setActiveKey(`${eventKey}`)}>
